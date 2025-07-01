@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>ステップアップ練習ツール｜解説</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            padding: 2rem;
+            background: #f0f0f0;
+            line-height: 1.6;
+        }
+
+        h1 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .explanation {
+            background: #fff;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            border-left: 5px solid #4caf50;
+        }
+
+        button {
+            display: inline-block;
+            margin-top: 2rem;
+            padding: 0.8rem 1.5rem;
+            font-size: 1.1rem;
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+            button:hover {
+                background-color: #45a049;
+            }
+    </style>
+</head>
+<body>
+    <h1>選んだ難易度のポイント</h1>
+    <div id="explanation" class="explanation">読み込み中...</div>
+    <button onclick="startMission()">▶ はじめる</button>
+
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        const difficulty = parseInt(params.get("difficulty")) || 1;
+
+        const explanations = {
+            1: `
+            <h2>★1（初心者向け）</h2>
+            <p>まずはWebページの基礎を体験！</p>
+            <ul>
+              <li><strong>HTML：</strong> タグの使い方、構造の基本</li>
+              <li><strong>CSS：</strong> 色や文字サイズ、余白などの装飾</li>
+              <li><strong>JavaScript：</strong> アラートなどのシンプルな動き</li>
+            </ul>
+          `,
+            2: `
+            <h2>★2（中級）</h2>
+            <p>より見やすく、伝わりやすくする工夫を学びます。</p>
+            <ul>
+              <li><strong>HTML：</strong> リスト・クラスによる構造化</li>
+              <li><strong>CSS：</strong> レイアウトや強調スタイル</li>
+              <li><strong>JavaScript：</strong> ボタン操作など動的な変更</li>
+            </ul>
+          `,
+            3: `
+            <h2>★3（上級）</h2>
+            <p>実用的なWebパーツを作るためのステップです。</p>
+            <ul>
+              <li><strong>HTML：</strong> フォームやテーブル</li>
+              <li><strong>CSS：</strong> ホバー・アニメーション</li>
+              <li><strong>JavaScript：</strong> 入力データの取得や表示</li>
+            </ul>
+          `
+        };
+
+        document.getElementById("explanation").innerHTML =
+            explanations[difficulty] || "<p>この難易度の解説は準備中です。</p>";
+
+        function startMission() {
+            window.location.href = `mission.html?difficulty=${difficulty}`;
+        }
+    </script>
+</body>
+</html>
