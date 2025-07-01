@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ステップアップ練習ツール｜ホーム</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            background: #f0f0f0;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        label {
+            font-size: 1.2rem;
+        }
+
+        select, button {
+            font-size: 1.1rem;
+            padding: 0.6em 1.2em;
+            margin-top: 1rem;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+            button:hover {
+                background-color: #45a049;
+            }
+    </style>
+</head>
+<body>
+    <h1>ステップアップ練習ツール</h1>
+    <label for="difficulty">難易度を選んでスタート:</label><br>
+    <select id="difficulty">
+        <option value="1">★（初心者向け）</option>
+        <option value="2">★★（中級）</option>
+        <option value="3">★★★（上級）</option>
+    </select>
+    <br>
+    <button onclick="start()">スタート ▶</button>
+    <br>
+    <button onclick="goPractice()">自由制作へ 🛠</button>
+
+    <script>
+        function start() {
+            const diff = document.getElementById('difficulty').value;
+            window.location.href = `explain.html?difficulty=${diff}`;
+        }
+
+        function goPractice() {
+            window.location.href = "practice.html";
+        }
+    </script>
+</body>
+</html>
